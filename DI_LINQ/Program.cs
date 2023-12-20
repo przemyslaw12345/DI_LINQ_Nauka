@@ -3,14 +3,16 @@ using DI_LINQ.Data;
 using DI_LINQ.Entity;
 using DI_LINQ.Repository;
 using DI_LINQ.Repository.RepositoryExtension;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 var services = new ServiceCollection();
 services.AddSingleton<IApp, App>();
-services.AddSingleton<IRepository<Employee>, SQLRepository<Employee>>();
+services.AddSingleton <IRepository<Employee>, SQLRepository<Employee>>();
+services.AddDbContext<SilaGenerycznosciDbContext>(option => option.UseInMemoryDatabase("StorageApp"));
 
 var serviceProvider = services.BuildServiceProvider();
-var app = serviceProvider.GetService<IApp>();
+var app = serviceProvider.GetService<IApp>()!;
 app.Run();
 
 Console.ReadKey();

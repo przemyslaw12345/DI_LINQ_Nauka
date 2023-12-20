@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DI_LINQ.Entity;
+using Microsoft.Extensions.Options;
 
 namespace DI_LINQ.Data
 {
@@ -13,10 +14,14 @@ namespace DI_LINQ.Data
 		public DbSet<Employee> Employees => Set<Employee>();
 		public DbSet<BusinessPartner> BusinessPartners => Set<BusinessPartner>();
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public SilaGenerycznosciDbContext(DbContextOptions<SilaGenerycznosciDbContext> option) : base(option)
 		{
-			base.OnConfiguring(optionsBuilder);
-			optionsBuilder.UseInMemoryDatabase("StorageApp"); // making a database with EFC as we are using in memory storage need to implement it with this code
+			
+		}
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
+		{
+			base.OnConfiguring(optionsbuilder);
+			optionsbuilder.UseInMemoryDatabase("StorageApp"); // making a database with efc as we are using in memory storage need to implement it with this code
 		}
 	}
 }
