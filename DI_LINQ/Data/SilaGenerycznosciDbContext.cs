@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace DI_LINQ.Data
 {
-	internal class SilaGenerycznosciDbContext : DbContext
+	public class SilaGenerycznosciDbContext : DbContext
 	{
 		public DbSet<Employee> Employees => Set<Employee>();
 		public DbSet<BusinessPartner> BusinessPartners => Set<BusinessPartner>();
@@ -21,7 +21,7 @@ namespace DI_LINQ.Data
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
 		{
 			base.OnConfiguring(optionsbuilder);
-			optionsbuilder.UseInMemoryDatabase("StorageApp"); // making a database with efc as we are using in memory storage need to implement it with this code
+			//optionsbuilder.UseInMemoryDatabase("StorageApp"); // making a database with efc as we are using in memory storage need to implement it with this code
 		}
 	}
 }

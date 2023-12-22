@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DI_LINQ.Entity
 {
-	internal class BusinessPartner : EntityBase
+	public class BusinessPartner : EntityBase
 	{
 		public string FirstName { get; set; } = null!;
 		public string LastName { get; set; } = null!;

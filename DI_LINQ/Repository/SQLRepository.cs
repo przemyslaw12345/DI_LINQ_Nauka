@@ -1,3 +1,4 @@
+using DI_LINQ.Data;
 ﻿using DI_LINQ.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,12 +13,12 @@ namespace DI_LINQ.Repository
 		IRepository<TEntity> where TEntity : class, IEntity, new()
 	{
 		private readonly DbSet<TEntity> _dbSet;
-		private readonly DbContext _dbContext;
+		private readonly SilaGenerycznosciDbContext _dbContext;
 
 		// private readonly ItemAdded<TEntity>? _itemAddedCallback;
 		private readonly Action<TEntity>? _itemAddedCallback;
 
-		public SQLRepository(DbContext dbContext,
+		public SQLRepository(SilaGenerycznosciDbContext dbContext,
 			Action<TEntity>? itemAddedCallback = null
 			/*ItemAdded<TEntity>? itemAddedCallback=null*/)
 		{
